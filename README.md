@@ -24,9 +24,43 @@ Folder structure
 
 **Manual Build**
 > docker build -t flaskapi-backend:latest .
-
-**Manual Deployment**
 > docker run --name flaskapi-backend -d -p 5001:5001 flaskapi-backend:latest
+
+## Observability
+**Prometheus Instrumentation**
+<ins> **RED Metrics** </ins>
+1. Request count
+2. Error count
+3. Duration Latency
+
+ScrapeEndpoint = /metrics 
+ScrapeEndpointPort = 5001
+<img width="1087" height="895" alt="Screenshot 2025-10-19 at 2 00 34 AM" src="https://github.com/user-attachments/assets/359d6e25-d934-489e-863a-2eceb4a5a6a4" />
+
+<ins> **Prometheus Operator Installation** </ins>
+**Prerequisite**
+1. Kubernetes
+2. Helm
+3. Kubectl
+
+**Installation**
+1. Add repository for helm charts for prometheus-operator deployment
+> helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+2. Helm repo update
+> helm repo update
+3. Create monitoring namespace
+> kubectl create namespace monitoring
+4. Servicemonitor kubernetes manifest definition for flaskapi-backend application
+> kubectl apply -f flaskapi-backend-servicemonitor.yml
+<img width="1678" height="442" alt="Screenshot 2025-10-19 at 1 54 33 AM" src="https://github.com/user-attachments/assets/3062f8ba-31fc-40b6-a7bb-870fa33555fa" />
+
+
+**Logging Instrumentation**
+1. INFO and ERROR Log
+2. stdout/stderr - container
+3. Json format
+
+
 
 ## Kubernetes Manifest
 Manifest for deployment on kuberenetes
