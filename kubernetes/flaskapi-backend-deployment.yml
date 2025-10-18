@@ -1,0 +1,44 @@
+# Namespace
+apiVersion: apps/v1
+kind: Namespace
+metadata:
+  name: webapp
+
+# Deployment 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskapi-backend
+  namespace: webapp
+  labels:
+     app: flaskapi-backend
+     tier: tier1
+     type: backend
+
+
+spec:
+  replicas: 1
+  selector:
+     matchLabels:
+        app: flaskapi-backend
+     
+  template:
+    metadata:
+        labels: 
+          app: flaskapi-backend
+          tier: tier1
+          type: backend
+    spec:
+      containers:
+      - name: flaskapi-backend
+        image: flaskapi-backend:latest
+        imagePullPolicy: Never  
+        ports:
+          - containerPort: 5001
+        resources:
+          requests:
+             cpu: 100m
+             memory: 128Mi
+          limits:
+             cpu: 250m
+             memory: 256Mi
