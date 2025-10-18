@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: flaskapi-backend 
+  namespace: argocd 
+spec:
+  project: webapp 
+  source:
+    repoURL: https://github.com/rajendravmattihalli/flaskapi-backend.git 
+    targetRevision: HEAD 
+    path: kubernetes 
+  destination:
+    server: https://kubernetes.default.svc 
+    namespace: webapp 
+  syncPolicy:
+    manual:
+      prune: true 
+      selfHeal: true 
+    syncOptions:
+      - CreateNamespace=true 

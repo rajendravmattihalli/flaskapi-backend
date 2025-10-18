@@ -1,10 +1,4 @@
-# Namespace
-apiVersion: apps/v1
-kind: Namespace
-metadata:
-  name: webapp
-
-# Deployment 
+# Kubernetes Deployment Definition Manifest file
 apiVersion: apps/v1
 kind: Deployment
 metadata:
