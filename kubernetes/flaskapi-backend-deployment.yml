@@ -1,4 +1,4 @@
-# Kubernetes Deployment Definition Manifest file
+# Kubernetes - FLASKAPI-BACKEND Deployment Definition Manifest file
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,7 +11,7 @@ metadata:
 
 
 spec:
-  replicas: 1
+  replicas: 3
   selector:
      matchLabels:
         app: flaskapi-backend
@@ -26,7 +26,7 @@ spec:
       containers:
       - name: flaskapi-backend
         image: flaskapi-backend:latest
-        imagePullPolicy: Never  
+        imagePullPolicy: Always  
         ports:
           - containerPort: 5001
         resources:

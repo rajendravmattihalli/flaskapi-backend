@@ -1,4 +1,4 @@
-# Kubernetes Namespace Definition Manifest file
+# Kubernetes - WEBAPP - Namespace Definition Manifest file
 apiVersion: v1
 kind: Namespace
 metadata:

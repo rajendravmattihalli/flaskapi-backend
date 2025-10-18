@@ -1,4 +1,4 @@
-# Kubernetes Service Definition Manifest file
+# Kubernetes - FLASKAPI-BACKEND - Service Definition Manifest file
 apiVersion: v1
 kind: Service
 metadata:

@@ -1,12 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  creationTimestamp: "2025-10-18T10:25:37Z"
-  generation: 5
   name: webapp
   namespace: argocd
-  resourceVersion: "2871"
-  uid: 875cb8f4-fb47-4736-9f8e-db4450ddd0e0
 spec:
   clusterResourceWhitelist:
   - group: '*'
