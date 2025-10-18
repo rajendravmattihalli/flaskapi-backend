@@ -13,7 +13,8 @@ spec:
       app: flaskapi-backend
   type: ClusterIP
   ports:
-    - protocol: TCP
+    - name: metrics
+      protocol: TCP
       port: 5001
       targetPort: 5001
 
