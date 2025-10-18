@@ -1,5 +1,50 @@
 # flaskapi-backend
-flaskapi backend CI - CD integration - job
+<ins> **flaskapi-backend application - contents** </ins>
+
+> 1. Multistage Docker build
+> 2. Observability
+> 3. Kubernetes manifest 
+> 4. CI Integration
+> 5. ArgoCD Integartion
+> 6. Sandbox Testing
+
+## Docker Build - Multistage
+
+Folder structure
+
+```
+├── docker-multistage
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+```
+
+**Prerequisite**
+> Docker
+
+**Manual Build**
+> docker build -t flaskapi-backend:latest .
+
+**Manual Deployment**
+> docker run --name flaskapi-backend -d -p 5001:5001 flaskapi-backend:latest
+
+## Kubernetes Manifest
+Manifest for deployment on kuberenetes
+
+Folder Structure
+```
+├── kubernetes
+│   ├── flaskapi-backend-deployment.yml
+│   ├── flaskapi-backend-service.yml
+│   └── namespace.yml
+```
+**Kubernetes Deployment**
+1. Create namespace if not exists
+> kubectl create -f namespace.yml
+2. Create - Deployment for flaskapi-backend -n webapp
+> kubectl create -f flaskapi-backend-deployment.yml
+3. Create - Service for flaskapi-backend
+> kubectl create -f flaskapi-backend-service.yml -n webapp
 
 ## CI Integration
 
@@ -46,4 +91,4 @@ Folder structure
 
 
 
-
+## Sandbox Testing
