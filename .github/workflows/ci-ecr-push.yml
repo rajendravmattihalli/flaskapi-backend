@@ -1,4 +1,4 @@
-# nginx-frontend - workflow for Build Docker image and push to AWS - ECR
+# flaskapi-backend - workflow for Build Docker image and push to AWS - ECR
 
 name: CI - Build and Push Docker Image to ECR
 on:
@@ -20,7 +20,7 @@ jobs:
 
     env:
       AWS_REGION: east-us-1                 
-      ECR_REPOSITORY: nginx-frontend        
+      ECR_REPOSITORY: flaskapi-backend        
       IMAGE_TAG: ${{ github.sha }}          
 
     steps:
