@@ -97,23 +97,21 @@ def home():
     return jsonify(message="Hello, World!")
 
 @app.route('/api')
-def apistatus(response):
+def apistatus():
     current_timestamp = datetime.now()
     return jsonify({
         "status": "ok",
         "date": current_timestamp.isoformat(),
-        "status_code" : response.status_code,
         "path" : request.path,
         "method" : request.method
     })
 
 @app.route('/health')
-def healthstatus(response):
+def healthstatus():
     current_timestamp = datetime.now()
     return jsonify({
         "status": "ok" ,
-        "date": current_timestamp.isoformat(),
-        "status_code" : response.status_code
+        "date": current_timestamp.isoformat()
     })
 
 @app.route("/metrics")
