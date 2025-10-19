@@ -42,6 +42,11 @@ ScrapeEndpointPort = 5001
 <img width="1087" height="895" alt="Screenshot 2025-10-19 at 2 00 34 AM" src="https://github.com/user-attachments/assets/359d6e25-d934-489e-863a-2eceb4a5a6a4" />
 
 <ins> **Prometheus Operator Installation** </ins>
+
+```
+├── observability
+│   └── flaskapi-backend-servicemonitor.yml
+```
 **Prerequisite**
 1. Kubernetes
 2. Helm
