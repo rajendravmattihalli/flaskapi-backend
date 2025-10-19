@@ -107,6 +107,52 @@ Folder Structure
 > kubectl create -f flaskapi-backend-service.yml -n webapp
 
 ## CI Integration
+**Prerequisite**
+1. OIDC provider
+2. IAM role - Githubactions
+3. Permission to ECR policy
+4. Change <ACCOUNT_ID> - cibuild-ecr/trust-policy.json
+5. create a GITHUB secret - AWS_ACCOUNT_ID 
+
+**OIDC provider**
+```
+aws iam create-open-id-connect-provider \
+  --url https://token.actions.githubusercontent.com \
+  --client-id-list sts.amazonaws.com \
+  --thumbprint-list 6938fd4d98bab03faadb97b34396831e3780aea1
+```
+
+**IAM role - GithubActions**
+```
+aws iam create-role \
+  --role-name GitHubActionsECRRole \
+  --assume-role-policy-document trust-policy.json
+```
+
+**Permission to ECR policy**
+```
+aws iam put-role-policy \
+  --role-name GitHubActionsECRRole \
+  --policy-name ECRPushPolicy \
+  --policy-document '{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:CompleteLayerUpload",
+          "ecr:UploadLayerPart",
+          "ecr:InitiateLayerUpload",
+          "ecr:PutImage"
+        ],
+        "Resource": "*"
+      }
+    ]
+  }'
+
+```
 
 
 ## ArgoCD integration
