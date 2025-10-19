@@ -45,7 +45,12 @@ ScrapeEndpointPort = 5001
 
 ```
 ├── observability
-│   └── flaskapi-backend-servicemonitor.yml
+│   ├── fluentd
+│   │   ├── fluentd-configmap.yml
+│   │   ├── fluentd-daemonset.yml
+│   │   └── fluentd-iam-policy.json
+│   └── prometheus
+│       └── flaskapi-backend-servicemonitor.yml
 ```
 **Prerequisite**
 1. Kubernetes
@@ -86,6 +91,26 @@ flaskapi-backend % minikube kubectl -- logs flaskapi-backend-86bc48cf7c-ggz5k -n
 {"level": "INFO", "service": "flaskapi-backend", "message": "GET /api 200 0.0009s", "logger": "flaskapi", "time": "2025-10-19 07:33:23,401"}
 {"level": "INFO", "service": "flaskapi-backend", "message": "GET /api 200 0.0003s", "logger": "flaskapi", "time": "2025-10-19 07:33:47,386"}
 ```
+
+**Fluentd Installation**
+1. Create fluentd-iam-policy 
+> aws iam create-policy \
+  --policy-name FluentdCloudWatchPolicy \
+  --policy-document observability/fluentd/fluentd-iam-policy.json
+
+2. Create Service Account 
+> eksctl create iamserviceaccount \
+  --name fluentd \
+  --namespace kube-system \
+  --cluster <YOUR_EKS_CLUSTER_NAME> \
+  --attach-policy-arn arn:aws:iam::<ACCOUNT_ID>:policy/FluentdCloudWatchPolicy \
+  --approve \
+  --override-existing-serviceaccounts
+3. Create fluentd-configmap
+> kubectl apply -f observability/fluentd/fluentd-configmap.yml
+
+4. Create a fluentd-daemonset application
+> kubectl apply -f observability/fluentd/fluentd-daemonset.yml
 
 
 ## Kubernetes Manifest
