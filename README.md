@@ -1,9 +1,10 @@
 # flaskapi-backend
+flaskapi-backend web application
+
+<img width="618" height="199" alt="Screenshot 2025-10-19 at 1 18 49 PM" src="https://github.com/user-attachments/assets/46609616-05fa-4d65-ae11-ea88aa590e6c" />
+
+
 <ins> **flaskapi-backend application - contents** </ins>
-
-**flaskapi application endpoints**
-/
-
 > 1. Multistage Docker build
 > 2. Observability
 > 3. Kubernetes manifest 
