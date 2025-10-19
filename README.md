@@ -1,6 +1,9 @@
 # flaskapi-backend
 <ins> **flaskapi-backend application - contents** </ins>
 
+**flaskapi application endpoints**
+/
+
 > 1. Multistage Docker build
 > 2. Observability
 > 3. Kubernetes manifest 
@@ -60,6 +63,23 @@ ScrapeEndpointPort = 5001
 2. stdout/stderr - container
 3. Json format
 
+```
+flaskapi-backend % minikube kubectl -- logs flaskapi-backend-86bc48cf7c-ggz5k -n webapp
+ * Serving Flask app '/app/app.py'
+ * Debug mode: off
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET / 200 0.0008s", "logger": "flaskapi", "time": "2025-10-19 07:28:42,968"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /favicon.ico 500 0.0011s", "logger": "flaskapi", "time": "2025-10-19 07:28:43,071"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /metrics 200 0.0031s", "logger": "flaskapi", "time": "2025-10-19 07:28:47,538"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /favicon.ico 500 0.0002s", "logger": "flaskapi", "time": "2025-10-19 07:28:47,605"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /api 200 0.0003s", "logger": "flaskapi", "time": "2025-10-19 07:28:52,051"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /favicon.ico 500 0.0003s", "logger": "flaskapi", "time": "2025-10-19 07:28:52,100"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /status 500 0.0002s", "logger": "flaskapi", "time": "2025-10-19 07:29:00,933"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /favicon.ico 500 0.0002s", "logger": "flaskapi", "time": "2025-10-19 07:29:00,971"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /health 200 0.0001s", "logger": "flaskapi", "time": "2025-10-19 07:29:06,295"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /favicon.ico 500 0.0002s", "logger": "flaskapi", "time": "2025-10-19 07:29:06,339"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /api 200 0.0009s", "logger": "flaskapi", "time": "2025-10-19 07:33:23,401"}
+{"level": "INFO", "service": "flaskapi-backend", "message": "GET /api 200 0.0003s", "logger": "flaskapi", "time": "2025-10-19 07:33:47,386"}
+```
 
 
 ## Kubernetes Manifest
