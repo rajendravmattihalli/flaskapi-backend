@@ -240,6 +240,6 @@ Folder Structure
 ```
 
 **Steps to do sandbox testing**
-> cd sandbox-testing
-> docker compose build
-> docker compose run
+> 1. cd sandbox-testing
+> 2. docker compose build
+> 3. docker compose run
