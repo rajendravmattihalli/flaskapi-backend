@@ -1,4 +1,4 @@
-# Kubernetes - FLASKAPI-BACKEND Deployment Definition Manifest file
+# Kubernetes - FLASKAPI-BACKEND - Deployment Definition Manifest file
 apiVersion: apps/v1
 kind: Deployment
 metadata:

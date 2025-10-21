@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  nginx-frontend:
+    image: nginx-frontend:latest
+    container_name: nginx-frontend
+    build: 
+      context: ./nginx-frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - flaskapi-backend
+    networks:
+      - app_network
+  flaskapi-backend:
+    image: flaskapi-backend:latest
+    container_name: flaskapi-backend
+    build: 
+      context: ./flaskapi-backend/
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

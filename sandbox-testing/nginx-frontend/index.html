@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TATA COMMUNICATIONS ASSIGNMENT</title>
+</head>
+<body>
+    <h1>RESPONSE FROM BACKEND: FLASKAPI</h1>
+    <div id="data-container">Loading...</div>
+
+    <script>
+        async function fetchData() {
+            try {
+                // If using Nginx reverse proxy, use the proxied path
+                const response = await fetch('/api'); 
+                //const response = await fetch('http://flaskapi-backend:5001/api/v1/status'); 
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                document.getElementById('data-container').innerText = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('data-container').innerText = 'Failed to load data.';
+            }
+        }
+
+        fetchData(); // Call the function when the page loads
+    </script>
+</body>
+</html>

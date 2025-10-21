@@ -1,0 +1,8 @@
+docker build -t nginx-frontend-multistage:latest .
+
+docker run --name frontend-nginx -d -p 80:80 nginx-frontend-multistage:latest
+
+docker build -t nginx-frontend-multistage:latest .
+
+docker run --name flaskapi-backend -d -p 5001:5001 flaskapi-backend:latest
+
